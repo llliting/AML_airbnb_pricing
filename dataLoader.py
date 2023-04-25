@@ -31,8 +31,8 @@ class AirbnbDataloader:
                 else:
                     self.data = pd.concat([self.data, data_per_city])
         
-    def split(self, data, test_size):
+    def split(self, data, test_size, random_state=42):
         X = data.drop(["realSum"], axis = 1)
         y = data["realSum"]
-        X_dev, X_test, y_dev, y_test = train_test_split(X, y, test_size=test_size)
+        X_dev, X_test, y_dev, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
         return X_dev, X_test, y_dev, y_test
